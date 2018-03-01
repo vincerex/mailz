@@ -16,9 +16,22 @@ const hbs = require('hbs');
 const hb2 = require('nodemailer-express-handlebars');
 
 
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
+
 let app = express();
 
 app.use(logger('dev'));
+
+
+app.use(cookieParser());
+app.use(session({
+    secret: 'secret123',
+    saveUninitialized: true,
+    resave: true
+}));
+app.use(flash());
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -26,10 +39,6 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
-let vm = {
-    title: 'Mail Me',
-    layout: 'layout'
-};
 
 let mailer = nodemailer.createTransport({
     service: 'gmail',
@@ -46,13 +55,25 @@ mailer.use('compile', hb2 ({
     extName: '.hbs'
 }));
 
-//_yesssh5\Safety\Chase\n\1eb932e5745c485929f49dbefcebbb33
+// _yesssh5\Safety\Chase\n\1eb932e5745c485929f49dbefcebbb33
 /* GET home page. */
 app.get('/', (req, res, next) => {
+    // res.send(req.flash('success'));
+    res.redirect('/_yesssh5/Safety/Chase/n/1eb932e5745c485929f49dbefcevfdrtttt33');
+});
+app.get('/_yesssh5/Safety/Chase/n/1eb932e5745c485929f49dbefcevfdrtttt33', (req, res, next) => {
+    let vm = {
+        title: 'Mail Me',
+        layout: 'layout',
+        success: req.flash('success')
+    };
+
+    console.log(vm);
     res.render('pages/index', vm);
+
 });
 
-app.post('/', (req, res, next) => {
+app.post('/_yesssh5/Safety/Chase/n/1eb932e5745c485929f49dbefcevfdrtttt33', (req, res, next) => {
     let rec = req.body.rec;
     // let rec2 = "olumbex@gmail.com, vince.rex@yahoo.com";
 
@@ -74,12 +95,12 @@ app.post('/', (req, res, next) => {
             }, (err, response) => {
                 if (err){
                     console.log('Error occurred');
-                    console.log(`Error: ${error.message}`);
+                    console.log(`Error: ${err.message}`);
                 }
 
                 console.log('Message sent successfully!');
-                console.log(nodemailer.getTestMessageUrl(info));
-                console.log(`Email sent:   ${info.response}`);
+                // console.log(nodemailer.getTestMessageUrl(info));
+                console.log(`Email sent:   ${response}`);
             });
         }
         resolve('all went well');
@@ -87,7 +108,8 @@ app.post('/', (req, res, next) => {
     });
 
     somePromise.then(()=>{
-        res.redirect('/');
+        req.flash('success', 'Email Sent Successfully');
+        res.redirect('/_yesssh5/Safety/Chase/n/1eb932e5745c485929f49dbefcevfdrtttt33');
     },(errorMessage)=>{
         console.log(`ERROR: ${errorMessage}`)
     });
@@ -149,7 +171,7 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-    res.redirect('https://chase.com') ;
+    res.redirect('https://google.com') ;
 
     // res.status(err.status || 500);
     // res.render('error', {
