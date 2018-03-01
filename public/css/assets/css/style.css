@@ -1,0 +1,60 @@
+body {
+  background-color: #f7f7f9;
+}
+#login{
+  margin-top: 15%;
+  margin-left: 20%;
+}
+.gbagaun{
+  margin: 40px 0;
+}
+.page-body{
+  margin: 20px auto;
+}
+.login-logo{
+  height: 70px;
+  width: auto;
+  margin: 0 10%;
+}
+.login-head{
+  font-size: 16px;
+  color: #777777;
+  margin: 15px 20%;
+}
+#login-btn{
+  display: block;
+}
+
+#login form{
+  margin: auto;
+}
+
+#login input[type="text"], input[type="password"], select{
+  width: 65%;
+}
+
+#login h1{
+  font-size: 4rem;
+}
+
+nav{
+   padding: 35px 20px 0 20px;
+   border-bottom: 1px solid #1EAEDB;
+}
+nav ul{
+ 
+  list-style-type: none;
+  margin-bottom: 0px;
+}
+nav ul li{
+  display: inline-block;
+  
+}
+
+nav p{
+  vertical-align: bottom;
+}
+
+
+
+

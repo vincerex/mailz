@@ -1,0 +1,25 @@
+.logon.header .chase.logo{
+    width:220px;
+    height:2rem;
+    margin:0 auto;
+    background:url(../img/wordmark-white.svg) center center no-repeat
+}
+.footer-container {
+    background: #fff;
+    font-size: 16px;
+    padding: 1em 0;
+    position: absolute !important;
+    margin-top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.logon .logon-box .input {
+    font-size: 1.125rem;
+    background: 0 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    margin: 10px 0;
+    outline: 0;
+}
